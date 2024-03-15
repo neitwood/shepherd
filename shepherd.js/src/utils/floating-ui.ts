@@ -134,10 +134,14 @@ function floatingUIposition(step: Step, shouldCenter: boolean) {
         transform: 'translate(-50%, -50%)'
       });
     } else {
+      const arrow = middlewareData.arrow
+      const top = arrow && placement === 'top' ? `${y - 12}px` : `${y + 12}px`
+      const left = arrow && placement === 'left' ? `${x - 12}px` : `${x + 12}px`
+
       Object.assign(step.el.style, {
         position: 'absolute',
-        left: `${x}px`,
-        top: `${y}px`
+        left: arrow ? left: `${x}px`,
+        top: arrow ? top: `${y}px`
       });
     }
 
